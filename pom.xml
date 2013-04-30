@@ -17,11 +17,13 @@
 			<url>http://www.opensource.org/licenses/mit-license.php</url>
 		</license>
 	</licenses>
+        <!--
 	<scm>
 		<connection>scm:hg:https://build-pipeline-plugin.googlecode.com/hg/</connection>
 		<developerConnection>scm:hg:https://build-pipeline-plugin.googlecode.com/hg/</developerConnection>
 		<url>https://build-pipeline-plugin.googlecode.com/hg/</url>
 	</scm>
+        //-->
 	<properties>
 		<code.coverage.percentage>50</code.coverage.percentage>
 		<checkstyle.rules.file>checkstyle_rules.xml</checkstyle.rules.file>
@@ -36,6 +38,12 @@
 			<email>plugins@centrumsystems.com.au</email>
 			<url>http://www.centrumsystems.com.au</url>
 		</developer>
+                <developer>
+                    <id>ukbma03</id>
+                    <name>Brett Mack</name>
+                    <email>brett.mack@livenation.co.uk</email>
+                    <url>http://www.ticketmaster.co.uk</url>
+                </developer>
 	</developers>
 	<dependencies>
 		<dependency>
