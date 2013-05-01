@@ -169,16 +169,37 @@ public class DownstreamProjectGridBuilder extends ProjectGridBuilder {
     }
 
     @Override
-    public HttpResponse doBuild(StaplerRequest req, @AncestorInPath BuildPipelineView owner) throws IOException {
-        final AbstractProject<?, ?> p = getFirstJob(owner);
+    public HttpResponse doBuild(StaplerRequest req, @AncestorInPath BuildPipelineView node) throws IOException {
+        final AbstractProject<?, ?> p = getFirstJob(node);
         if (p == null) {
             return HttpResponses.error(StaplerResponse.SC_BAD_REQUEST, "No such project: " + getFirstJob());
         }
 
         return new HttpResponse() {
             @Override
-            public void generateResponse(StaplerRequest req, StaplerResponse rsp, Object node) throws IOException, ServletException {
+            public void generateResponse(StaplerRequest req, StaplerResponse rsp, Object owner) throws IOException, ServletException {
                 p.doBuild(req, rsp);
+            }
+        };
+    }
+    
+    /**
+     * Called after starting a new pipeline instance
+     * (normally by triggering some job.)
+     *
+     * @param req
+     *      Current HTTP request
+     * @param node
+     *      View that this builder is operating under.
+     * @return
+     *      The HTTP response.
+     */
+    public HttpResponse doIndex(StaplerRequest req, @AncestorInPath BuildPipelineView node) throws IOException {
+        
+        return new HttpResponse() {
+            @Override
+            public void generateResponse(StaplerRequest req, StaplerResponse rsp, Object owner) throws IOException, ServletException {
+                rsp.sendRedirect("../");
             }
         };
     }

@@ -197,7 +197,7 @@
         <j:if test="${hasBuildPermission}">
           <div class="icon-container">
             <div>
-              <a href='gridBuilder/build'>
+              <a href='gridBuilder/build?delay=0sec'>
                 <img src="${rootURL}/images/24x24/clock.png" alt="Trigger a Pipeline" class="icon-with-caption" />
               </a>
             </div>
